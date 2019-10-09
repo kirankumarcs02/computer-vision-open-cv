@@ -11,7 +11,7 @@ def eye_aspect_ratio(eye):
     B = distance.euclidean(eye[2], eye[4])
     C = distance.euclidean(eye[0], eye[3])
     ratio = (A + B) / (2.0 * C)
-    print("ratio", ratio)
+    # print("ratio", ratio)
     return ratio
 
 
@@ -47,21 +47,22 @@ while True:
         for (x_l,y_l) in rightEye:
             cv2.circle(frame,(x_l, y_l), 1, (0, 0, 255), -1)
 
-        cv2.putText(frame, "Blink = " + str(flag), (10, 30),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+
         if avg < thresh and is_eye_closed == True:
             is_eye_closed=False
             print("-----------EYE CLOSED------------")
             pyautogui.press('space')
             flag += 1
             print(flag)
-            cv2.putText(frame, "Blink = "+ str(flag), (10, 30),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2) 
+            # cv2.putText(frame, "Video Paused", (10, 30),
+            #             cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
         elif avg > thresh:
             if(is_eye_closed == False):
                 print()
                 pyautogui.press('space')
             print("-----------EYE OPEN------------")
+            cv2.putText(frame, "Video playing", (10, 30),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             is_eye_closed=True
     cv2.imshow("Frame", frame)
     key = cv2.waitKey(1) & 0xFF

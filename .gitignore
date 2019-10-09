@@ -105,3 +105,4 @@ venv.bak/
 .idea/computer-vision-open-cv.iml
 .idea/encodings.xml
 .idea/*
+facial_landmark/videoplayback.mp4

@@ -1,10 +1,11 @@
 import cv2
-cap = cv2.VideoCapture('test.mp4')
+cap = cv2.VideoCapture('../../facial_landmark/videoplayback.mp4')
 
 while True:
     ret, frame = cap.read()
     key = cv2.waitKey(1) & 0xff
     if not ret:
+        print('hey')
         break
     if key == ord('p'):
         while True:
